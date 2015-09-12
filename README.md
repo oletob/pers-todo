@@ -1,2 +1,2 @@
-# personal-todo-list
+# pers-todo
 Keep a record of short personal tasks
