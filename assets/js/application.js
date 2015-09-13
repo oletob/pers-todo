@@ -12,7 +12,7 @@
 
 var perstodo_app = angular.module('perstodo-app', ['ui.router']);
 
-/*Config route mapping with angularjs $routeProvider*/
+//Config route mapping with angularjs $routeProvider on 'perstodo-app' module loading
 perstodo_app.config(function($stateProvider, $urlRouterProvider){
 	
 	//homepage
@@ -46,4 +46,19 @@ perstodo_app.config(function($stateProvider, $urlRouterProvider){
 	});
 
 	$urlRouterProvider.otherwise('/');
+});
+
+//This method should be performed when the injector is done loading all modules
+perstodo_app.run(function($rootScope){
+	$rootScope.$on('$locationChangeStart', function(event, newUrl, oldUrl){
+		/*Apply css class to the application body*/
+		var nw = newUrl.split('#')[1];
+		if(nw.indexOf('app') > -1){
+			if(nw === '/app/login'){
+				$rootScope.bodyClass = 'login';
+			}else{
+				$rootScope.bodyClass = 'account';
+			}
+		}
+	});
 });
