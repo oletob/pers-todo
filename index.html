@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="perstodo-app">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,49 +10,12 @@
         <link href="assets/css/application.css" type="text/css" rel="stylesheet">
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top navbar-custom">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand brand-custom" href="#">PERS-TODO</a>
-                </div>
-            </div>
-        </nav>
-        <div class="jumbotron">
-            <div class="container">
-                <h1>Welcome!</h1>
-                <p>With PersTodo, you can keep track of all your personal tasks both pending and already made, so you'll always be up with your daily tasks.</p>
-                <p><a class="btn btn-primary btn-lg" href="#" role="button">Take me to my tasks &raquo;</a></p>
-          </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h2>Track your tasks</h2>
-                    <p></p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Organize your daily to-do</h2>
-                    <p></p>
-               </div>
-                <div class="col-md-4">
-                    <h2>Achieve more</h2>
-                    <p>&nbsp;</p>
-                    <p>&nbsp;</p>
-                    <p>&nbsp;</p>
-                    <p>&nbsp;</p>
-                    <p>&nbsp;</p>
-                </div>
-            </div>
-            <hr>
-            <footer>
-                <p>Enjoy your tasks!</p>
-            </footer>
-        </div>
+        <div ui-view></div>
+        <!-- Scripts libs-->
+        <script type="text/javascript" src="assets/js/libs/angular.min.js"></script>
+        <script type="text/javascript" src="assets/js/libs/angular-ui-router.min.js"></script>
+
+        <!-- Scripts app-->
+        <script type="text/javascript" src="assets/js/application.js"></script>
     </body>
 </html>
