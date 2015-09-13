@@ -1,2 +1,3 @@
-# pers-todo
-Keep a record of short personal tasks
+# PersTodo
+Keep a record of short personal tasks.
+Enjoy your tasks!

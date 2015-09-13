@@ -1,0 +1,27 @@
+<link rel="stylesheet" type="text/css" href="assets/css/app/auth.css">
+<div class="container">
+    <form class="form-signin" ng-submit="login(user)" name="login_form">
+        <h1 class="form-signin-heading" align="center">PERS-TODO</h1>
+        <h2 class="form-signin-heading" align="center">Login and enjoy your tasks!</h2>
+        
+        <p class="bg-info" style="padding:15px">
+            For test purpose use the following credentials:<br><br>
+            <strong>Email address:</strong> admin@admin.com<br>
+            <strong>Password:</strong> admin
+        </p>
+
+        <p class="bg-danger" style="padding:15px" ng-if="auth_error">Wrong email address or password</p>
+        <input type="email" class="form-control" ng-model="user.email" 
+               placeholder="Email address" required autofocus>
+        <input type="password" class="form-control" ng-model="user.passw"
+               placeholder="Password" required>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" 
+                ng-class="{'disabled' : login_form.$invalid || logging}"
+                type="submit">{{btnLogin}}</button>
+    </form>
+</div>
