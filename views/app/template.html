@@ -1,38 +1,48 @@
-<link rel="stylesheet" type="text/css" href="assets/css/app/template.css">
-<nav class="navbar navbar-inverse navbar-fixed-top navbar-custom">
+<div class="content-template">
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar-custom">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+                        data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand brand-custom" href="#">PERS-TODO</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/app/dashboard" class="brand-custom">Settings</a></li>
+                    <li><a href="#/app/dashboard" class="brand-custom">Profile</a></li>
+                    <li><a href="#/" class="brand-custom">Logout</a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search tasks...">
+                </form>
+            </div>
+      </div>
+    </nav>
     <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
-                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand brand-custom" href="#">PERS-TODO</a>
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li ng-class="{'active' : section == 'dash'}">
+                        <a href="#/app/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li ng-class="{'active' : section == 'my-tasks'}">
+                        <a href="#/app/my-tasks">My Tasks <span class="badge">{{totalTasks.length}}</span></a>
+                    </li>
+                    <li ng-class="{'active' : section == 'pending-tasks'}">
+                        <a href="#/app/pending-tasks">Pendings <span class="badge">{{totalPendingTasks}}</span></a>
+                    </li>
+                    <li ng-class="{'active' : section == 'done-tasks'}">
+                        <a href="#/app/done-tasks">Done <span class="badge">{{totalDoneTasks}}</span></a>
+                    </li>
+                    <li><a href="#/">Logout</a></li>
+                </ul>
+            </div>
+            <div ui-view="page-content"></div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/app/dashboard" class="brand-custom">Settings</a></li>
-                <li><a href="#/app/dashboard" class="brand-custom">Profile</a></li>
-                <li><a href="#/" class="brand-custom">Logout</a></li>
-            </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search tasks...">
-            </form>
-        </div>
-  </div>
-</nav>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="#/app/dashboard">Menu 1 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#/app/dashboard">Menu 2</a></li>
-                <li><a href="#/app/dashboard">Menu 3</a></li>
-                <li><a href="#/app/dashboard">Menu 4</a></li>
-            </ul>
-        </div>
-        <div ui-view="page-content"></div>
     </div>
 </div>

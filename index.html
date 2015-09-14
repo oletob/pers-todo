@@ -9,7 +9,9 @@
         <link href="assets/css/bootstrap.min.css" type="text/css" rel="stylesheet">
         <link href="assets/css/application.css" type="text/css" rel="stylesheet">
     </head>
-    <body>
+    <body ng-class="{'home-body' : bodyClass == 'home', 
+                     'login-body' : bodyClass == 'login', 
+                     'template-body' : bodyClass == 'account'}">
         <div ui-view></div>
         
         <!-- Scripts libs-->
@@ -20,5 +22,6 @@
         <script type="text/javascript" src="assets/js/application.js"></script>
         <script type="text/javascript" src="assets/js/controllers.js"></script>
         <script type="text/javascript" src="assets/js/controllers/login.ctrl.js"></script>
+        <script type="text/javascript" src="assets/js/controllers/tasks.ctrl.js"></script>
     </body>
 </html>
