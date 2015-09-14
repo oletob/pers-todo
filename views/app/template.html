@@ -27,10 +27,19 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#/app/dashboard">Menu 1 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#/app/dashboard">Menu 2</a></li>
-                    <li><a href="#/app/dashboard">Menu 3</a></li>
-                    <li><a href="#/app/dashboard">Menu 4</a></li>
+                    <li ng-class="{'active' : section == 'dash'}">
+                        <a href="#/app/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li ng-class="{'active' : section == 'my-tasks'}">
+                        <a href="#/app/my-tasks">My Tasks <span class="badge">{{totalTasks.length}}</span></a>
+                    </li>
+                    <li ng-class="{'active' : section == 'pending-tasks'}">
+                        <a href="#/app/pending-tasks">Pendings <span class="badge">{{totalPendingTasks}}</span></a>
+                    </li>
+                    <li ng-class="{'active' : section == 'done-tasks'}">
+                        <a href="#/app/done-tasks">Done <span class="badge">{{totalDoneTasks}}</span></a>
+                    </li>
+                    <li><a href="#/">Logout</a></li>
                 </ul>
             </div>
             <div ui-view="page-content"></div>

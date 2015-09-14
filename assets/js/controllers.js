@@ -9,13 +9,31 @@
 
  /**
   * loginCtrl
-  * Manage usres account authentication to the application.
+  * Manage user account authentication to the application.
   * 
   * Dependencies and params:
   *     $scope -- 
   *     $timeout --
   * 	$location
+  *
+  * @author Algenis E. Volquez <evolquez@gmail.com>
+  * @date Sept 13th, 2015
   */
 perstodo_app.controller('loginCtrl', ['$scope', '$timeout', '$location', function($scope, $timeout, $location){
 	login_ctrl($scope, $timeout, $location); /*@see assets/js/controllers/login.ctrl.js*/
 }]);
+
+/**
+ * tasksCtrl
+ * Manage loggedin users tasks
+ * 
+ * Dependencies and params:
+ *     $scope
+ *     $rootScope
+ *
+ * @author Algenis E. Volquez <evolquez@gmail.com>
+ * @date Sept 13th, 2015
+ */
+ perstodo_app.controller('tasksCtrl', ['$scope', '$rootScope', function($scope, $rootScope){
+ 	tasks_ctrl($scope, $rootScope); /*@see assets/js/controllers/tasks.ctrl.js*/
+ }]);

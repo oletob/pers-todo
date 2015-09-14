@@ -12,6 +12,9 @@
  * @param object $scope
  * @param object $timeout
  * @param object $location
+ *
+ * @author Algenis E. Vólquez <evolquez@gmail.com>
+ * @date Sept 13th, 2015
  */
 function login_ctrl($scope, $timeout, $location){
 	$scope.btnLogin = 'Login';

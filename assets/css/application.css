@@ -1,9 +1,13 @@
 .navbar-custom{
-	background-color: #009688 !important;
-	border-color: #009688 !important;
+	background-color: #428bca !important;
+	border-color: #428bca !important;
 }
 .brand-custom{
 	color: #333 !important;
+}
+
+.home-body{
+  padding-top: 0 !important;
 }
 
 /*Login styles*/
@@ -146,4 +150,16 @@
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+}
+
+/*Custom*/
+.dash-greeting{color:#1b809e;}
+.task-done{
+  text-decoration: line-through;
+  color: #ccc;
+}
+.task-input{width:399px !important;}
+.btn-remove-task:hover{
+  color: red;
+  text-decoration: none;
 }
