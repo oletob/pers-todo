@@ -10,7 +10,7 @@
  * @date Sept 13th, 2015
  */
 
-var perstodo_app = angular.module('perstodo-app', ['ui.router']);
+var perstodo_app = angular.module('perstodo-app', ['ui.router', 'ngDialog']);
 
 //Config route mapping with angularjs $routeProvider on 'perstodo-app' module loading
 perstodo_app.config(function($stateProvider, $urlRouterProvider){
@@ -85,6 +85,7 @@ perstodo_app.config(function($stateProvider, $urlRouterProvider){
 
 //This method should be performed when the injector is done loading all modules
 perstodo_app.run(function($rootScope){
+	console.log('over here')
 	$rootScope.$on('$locationChangeStart', function(event, newUrl, oldUrl){
 		$rootScope.bodyClass = 'home';
 		/*Apply css class to the application body*/
@@ -106,10 +107,10 @@ perstodo_app.run(function($rootScope){
 
 		//Sets the active option on sidebar left menu
 		switch(nw){
-			case '/app/dashboard': $rootScope.section = 'dash'; break;
-			case '/app/my-tasks': $rootScope.section = 'my-tasks'; break;
-			case '/app/pending-tasks': $rootScope.section = 'pending-tasks'; break;
-			case '/app/done-tasks': $rootScope.section = 'done-tasks'; break;
+			case '/app/dashboard'		: $rootScope.section = 'dash'; break;
+			case '/app/my-tasks'		: $rootScope.section = 'my-tasks'; break;
+			case '/app/pending-tasks'	: $rootScope.section = 'pending-tasks'; break;
+			case '/app/done-tasks'		: $rootScope.section = 'done-tasks'; break;
 		}
 	});
 });
