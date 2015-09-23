@@ -7,16 +7,19 @@
     
         <title>Personal To-do list : PersTodo</title>
         <link href="assets/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+        <link href="assets/css/ngDialog/ngDialog.min.css" type="text/css" rel="stylesheet">
+        <link href="assets/css/ngDialog/ngDialog-theme-default.min.css" type="text/css" rel="stylesheet">
         <link href="assets/css/application.css" type="text/css" rel="stylesheet">
     </head>
-    <body ng-class="{'home-body' : bodyClass == 'home', 
-                     'login-body' : bodyClass == 'login', 
-                     'template-body' : bodyClass == 'account'}">
+    <body ng-class="{'home-body'    : bodyClass == 'home', 
+                     'login-body'   : bodyClass == 'login', 
+                     'template-body': bodyClass == 'account'}">
         <div ui-view></div>
         
         <!-- Scripts libs-->
         <script type="text/javascript" src="assets/js/libs/angular.min.js"></script>
         <script type="text/javascript" src="assets/js/libs/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="assets/js/libs/ngDialog.min.js"></script>
 
         <!-- Scripts app-->
         <script type="text/javascript" src="assets/js/application.js"></script>
