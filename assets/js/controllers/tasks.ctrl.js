@@ -11,11 +11,12 @@
  * tasks_ctrl function
  * @param object $scope
  * @param object $rootScope
+ * @param object ngDialog
  *
  * @author Algenis E. Vólquez <evolquez@gmail.com>
  * @date Sept 13th, 2015
  */
- function tasks_ctrl($scope, $rootScope){
+function tasks_ctrl($scope, $rootScope, ngDialog){
  	var _limit_input = 30;
  	
  	$scope.limitInput = _limit_input;
@@ -29,9 +30,11 @@
  		if($scope.task_name === undefined || $scope.task_name.trim() === "") return false;
 		
 		$rootScope.totalTasks.push({
-			name : $scope.task_name,
-			done : false,
-			added: new Date().toLocaleString()
+			id 		: $rootScope.totalTasks.length+1,
+			name 	: $scope.task_name,
+			done 	: false,
+			added	: new Date().toLocaleString(),
+			done_on : '...'
 		});
 		$rootScope.totalPendingTasks++;
 		$scope.task_name = "";
@@ -55,8 +58,17 @@
  	 */
  	$scope.doneUndoneTask = function(id){
  		if(id !== undefined){
-			$rootScope.totalDoneTasks = ($rootScope.totalTasks[id].done) ? $rootScope.totalDoneTasks+1 : $rootScope.totalDoneTasks-1;
-			$rootScope.totalPendingTasks = ($rootScope.totalTasks[id].done) ? $rootScope.totalPendingTasks-1 : $rootScope.totalPendingTasks+1;
+ 			//Find the task index
+ 			var taskIndex = $rootScope.findArrayIndexById($rootScope.totalTasks, id);
+ 			if(typeof taskIndex === 'number'){
+ 				//Set the done date
+ 				$rootScope.totalTasks[taskIndex].done_on = ($rootScope.totalTasks[taskIndex].done) ? 
+ 					new Date().toLocaleString() : '...';
+				$rootScope.totalDoneTasks = ($rootScope.totalTasks[taskIndex].done) ? 
+					$rootScope.totalDoneTasks+1 : $rootScope.totalDoneTasks-1;
+				$rootScope.totalPendingTasks = ($rootScope.totalTasks[taskIndex].done) ? 
+					$rootScope.totalPendingTasks-1 : $rootScope.totalPendingTasks+1;	
+ 			}
 		}
  	}
 
@@ -68,12 +80,35 @@
  	 */
  	$scope.removeTask = function(id){
  		if(id !== undefined){
- 			if($rootScope.totalTasks[id].done){
- 				$rootScope.totalDoneTasks--;
- 			}else{
- 				$rootScope.totalPendingTasks--;
- 			}
- 			$rootScope.totalTasks.splice(id, 1);
+			var taskIndex = $rootScope.findArrayIndexById($rootScope.totalTasks, id);
+			if(typeof taskIndex === 'number'){
+	 			if($rootScope.totalTasks[taskIndex].done){
+	 				$rootScope.totalDoneTasks--;
+	 			}else{
+	 				$rootScope.totalPendingTasks--;
+	 			}
+	 			$rootScope.totalTasks.splice(taskIndex, 1);
+			}
+ 			$rootScope.closeDialog('tasks');
  		}
  	}
- }
+
+ 	/**
+ 	 * Show a confirm dialog before delete an specific task
+ 	 * @param int id | the task index
+ 	 * @author Algenis E. Volquez <evolquez@gmail.com>
+ 	 * @date Sep 23th, 2015
+ 	 */
+ 	$scope.preRemoveTask = function(id){
+ 		$scope.dialogTitle 	= 'Delete task';
+ 		$scope.contentText 	= 'Delete selected task?';
+ 		$scope.entityId 	= id;
+ 		
+ 		var _dobject = ngDialog.open({
+ 			template 	: 'views/modals/confirm.html',
+ 			cache 		: false,
+ 			scope  		: $scope
+ 		});
+ 		$rootScope.dialogsActive['tasks'] = _dobject.id;
+ 	}
+}

@@ -19,20 +19,22 @@
 				<thead>
 		            <tr>
 		            	<th></th>
-		            	<th>Task</th>
-		              	<th>Added on</th>
+		            	<th class="text-center">Task</th>
+		              	<th class="text-center">Added on</th>
+		              	<th class="text-center">Done on</th>
 		              	<th></th>
 		            </tr>
 		        </thead>
 		        <tbody>
-		        	<tr ng-repeat="task in totalTasks track by $index">
+		        	<tr ng-repeat="task in totalTasks | orderBy:'-added' track by $index">
 		            	<td><input type="checkbox" ng-model="task.done" 
-		            			   ng-change="doneUndoneTask($index)" style="cursor:pointer"></td>
+		            			   ng-change="doneUndoneTask(task.id)" style="cursor:pointer"></td>
 		              	<td><span ng-class="{'task-done':task.done == true}">{{task.name}}</span></td>
-		              	<td>{{task.added}}</td>
+		              	<td class="text-center">{{task.added}}</td>
+		              	<td class="text-center">{{task.done_on}}</td>
 		              	<td>
 		              		<button type="button" class="btn-link btn-remove-task" 
-		              				ng-click="removeTask($index)">Remove</button>
+		              				ng-click="preRemoveTask(task.id)">Remove</button>
 		              	</td>
 		            </tr>
 		        </tbody>

@@ -11,16 +11,16 @@
 				<thead>
 		            <tr>
 		            	<th></th>
-		            	<th>Task</th>
-		              	<th>Added on</th>
+		            	<th class="text-center">Task</th>
+		              	<th class="text-center">Added on</th>
 		            </tr>
 		        </thead>
 		        <tbody>
-		        	<tr ng-repeat="task in totalTasks | filter:{done:false}">
+		        	<tr ng-repeat="task in totalTasks | filter:{done:false} | orderBy:'-added'">
 		            	<td><input type="checkbox" ng-model="task.done" 
-		            			   ng-change="doneUndoneTask($index)" style="cursor:pointer"></td>
+		            			   ng-change="doneUndoneTask(task.id)" style="cursor:pointer"></td>
 		              	<td><span ng-class="{'task-done':task.done == true}">{{task.name}}</span></td>
-		              	<td>{{task.added}}</td>
+		              	<td class="text-center">{{task.added}}</td>
 		            </tr>
 		        </tbody>
 			</table>
